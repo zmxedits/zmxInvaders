@@ -25,38 +25,38 @@
             y: 200,
             width: 100,
             height: 50,
-            src: 'img/rocket.png'
+            src: 'rocket.png'
         };
 
         let ufos = [];
         let shots = [];
 
         document.onkeydown = function(e) {
-            if (e.keyCode == 32) { // Leertaste gedrückt
+            if (e.keyCode == 32) { 
                 KEY_SPACE = true;
             }
 
-            if (e.keyCode == 38) { // Nach oben gedrückt
+            if (e.keyCode == 38) { 
                 KEY_UP = true;
             }
 
-            if (e.keyCode == 40) { // Nach unten gedrückt
+            if (e.keyCode == 40) { 
                 KEY_DOWN = true;
             }
         }
 
 
         document.onkeyup = function(e) {
-            if (e.keyCode == 32) { // Leertaste losgelassen
+            if (e.keyCode == 32) { 
                 KEY_SPACE = false;
             }
 
 
-            if (e.keyCode == 38) { // Nach oben losgelassen
+            if (e.keyCode == 38) { 
                 KEY_UP = false;
             }
 
-            if (e.keyCode == 40) { // Nach unten losgelassen
+            if (e.keyCode == 40) { 
                 KEY_DOWN = false;
             }
         }
@@ -68,14 +68,14 @@
             setInterval(update, 1000 / 25);
             setInterval(createUfos, 5000);
             setInterval(checkForCollion, 1000 / 25);
-            setInterval(checkForShoot, 1000 / 10); // Deine Hausaufgabe
+            setInterval(checkForShoot, 1000 / 10); 
             draw();
         }
 
         function checkForCollion() {
             ufos.forEach(function(ufo) {
 
-                // Kontrollieren, ob UFO mit Rakete kollidiert
+               
                 if (rocket.x + rocket.width > ufo.x &&
                     rocket.y + rocket.height > ufo.y &&
                     rocket.x < ufo.x &&
@@ -86,9 +86,9 @@
                     ufos = ufos.filter(u => u != ufo);
                 }
 
-                // Deine Hausaufgabe
+                
                 shots.forEach(function(shot) {
-                    // Kontrollieren, ob Laser mit Rakete kollidiert
+                    
                     if (shot.x + shot.width > ufo.x &&
                         shot.y + shot.height > ufo.y &&
                         shot.x < ufo.x &&
@@ -111,17 +111,16 @@
         function createUfos() {
             let ufo = {
                 x: 800,
-                y: Math.random() * 500, // Wir platzieren unsere UFOs an einem zufälligen Ort
+                y: Math.random() * 500, 
                 width: 100,
                 height: 40,
-                src: 'img/ufo.png',
+                src: 'ufo.png',
                 img: new Image()
             };
-            ufo.img.src = ufo.src; // Ufo-Bild wird geladen.
+            ufo.img.src = ufo.src;
             ufos.push(ufo);
         }
 
-        // Deine Hausaufgabe
         function checkForShoot() {
             if (KEY_SPACE) {
                 let shot = {
@@ -129,10 +128,10 @@
                     y: rocket.y + 22,
                     width: 20,
                     height: 4,
-                    src: 'img/shot.png',
+                    src: 'shot.png',
                     img: new Image()
                 };
-                shot.img.src = shot.src; // Laser-Bild wird geladen.
+                shot.img.src = shot.src; 
 
                 shots.push(shot);
             }
@@ -160,7 +159,7 @@
         }
 
         function loadImages() {
-            backgroundImage.src = 'img/background.png';
+            backgroundImage.src = 'background.png';
             rocket.img = new Image();
             rocket.img.src = rocket.src;
         }
